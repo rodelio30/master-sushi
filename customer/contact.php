@@ -88,13 +88,14 @@ include 'nav.php';
         <h2>Contact Us</h2>
         <p>Feel free to reach out to us through the following:</p>
         <ul>
-          <li><strong>Phone:</strong> 09613165793</li>
+          <li><strong>Phone:</strong> 09613165793 / 09451301924</li>
           <li><strong>Email:</strong> <a href= "mailto:joeybago.jb@gmail.com">joeybago.jb@gmail.com</a></li>
-          <li><strong>Address:</strong> 71a Bonny Serrano Avenue , Quezon City, Philippines</li>
+          <li><strong>Address:</strong> 71a Col. Bonny Serrano Avenue , Quezon City, Philippines</li>
           <li><strong>Facebook Page:</strong> 
             <a href="https://www.facebook.com/mastersushi0713/" target="_blank">Master SUSHI</a>
           </li>
-          <li> <strong>Time Open:</strong> 10:00 AM – 7:00 PM (Monday to Sunday) </li>
+            <li> <strong>Time Open:</strong> 10:00 AM – 7:00 PM (Monday to Saturday) </li>
+            <li> <strong>Ordering Time:</strong> 10:00 AM – 10:00 PM (Monday to Saturday) </li>
         </ul>
       </div>
       <div class="contact-map">

@@ -223,7 +223,9 @@ include 'nav.php';
 <!-- Bank Details -->
 <div id="bankDetails" class="alert alert-light border d-none">
   <strong>Bank Transfer Details:</strong><br>
-  Bank Name: <strong>Security Bank</strong><br>
+  <div class="mt-2 mb-1">
+    Bank Name: <strong>Security Bank</strong><br>
+  </div>
   Account Name: 
   <span id="bankName">master sushi food kiosk</span>
   <button class="btn btn-sm btn-outline-secondary ms-2" onclick="copyToClipboard('bankName')">Copy</button><br>
@@ -391,7 +393,7 @@ document.querySelectorAll('.qtyCheck-btn').forEach(button => {
 });
 
 </script>
-<script>
+<!-- <script>
   const pickupDateInput = document.getElementById('pickup_date');
 
   pickupDateInput.addEventListener('input', function () {
@@ -423,7 +425,64 @@ document.querySelectorAll('.qtyCheck-btn').forEach(button => {
       }
     });
   });
-</script> 
+</script>  -->
+<script>
+  const pickupDateInput = document.getElementById('pickup_date');
+  const pickupTimeSelect = document.getElementById('pickup_time');
+
+  function formatDateToYYYYMMDD(date) {
+    return date.toISOString().split('T')[0];
+  }
+
+  function setMinPickupDate() {
+    const now = new Date();
+    const currentHour = now.getHours();
+    const minDate = new Date();
+
+    if (currentHour >= 19) { // After 7 PM
+      minDate.setDate(minDate.getDate() + 1); // Move to tomorrow
+    }
+
+    const formattedMinDate = formatDateToYYYYMMDD(minDate);
+    pickupDateInput.setAttribute('min', formattedMinDate);
+    pickupDateInput.value = formattedMinDate; // Set default to earliest available
+    handleTimeOptions(minDate);
+  }
+
+  function handleTimeOptions(dateSelected) {
+    const now = new Date();
+    const isToday = formatDateToYYYYMMDD(now) === formatDateToYYYYMMDD(dateSelected);
+    const currentHour = now.getHours();
+
+    const options = pickupTimeSelect.querySelectorAll('option[data-hour]');
+    options.forEach(option => {
+      const optionHour = parseInt(option.getAttribute('data-hour'), 10);
+      if (isToday && optionHour <= currentHour) {
+        option.disabled = true;
+        option.style.color = "#999";
+      } else {
+        option.disabled = false;
+        option.style.color = ""; // reset
+      }
+    });
+  }
+
+  pickupDateInput.addEventListener('input', function () {
+    const selectedDate = new Date(this.value);
+    if (selectedDate.getDay() === 0) {
+      alert('Pickup is not available on Sundays. Please choose another date.');
+      this.value = '';
+      pickupTimeSelect.innerHTML = '<option value="">-- Select a time slot --</option>';
+    } else {
+      handleTimeOptions(selectedDate);
+    }
+  });
+
+  window.addEventListener('DOMContentLoaded', function () {
+    setMinPickupDate();
+  });
+</script>
+
 
 <script>
   const paymentSelect = document.getElementById('payment');

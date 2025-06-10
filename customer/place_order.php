@@ -32,6 +32,7 @@ $customer_phone = $userData['contact_number'];
 $order_tracker = 'MS-' . date('Ymd') . '-' . str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
 
 
+
 // Start transaction
 $conn->begin_transaction();
 
@@ -79,7 +80,82 @@ try {
 
         $itemStmt->bind_param("iiidd", $order_id, $product_id, $quantity, $price, $subtotal);
         $itemStmt->execute();
+
+        // Fetch product name and additional details
+    $productQuery = $conn->prepare("SELECT product_name, brand FROM products WHERE product_id = ?");
+    $productQuery->bind_param("i", $product_id);
+    $productQuery->execute();
+    $productResult = $productQuery->get_result();
+    $productData = $productResult->fetch_assoc();
+
+    $productName = $productData['product_name'];
+    $details = "Brand: {$productData['brand']}";
+
+    // Push into orderItems array
+    $orderItems[] = [
+        'name' => $productName,
+        'details' => $details,
+        'qty' => $quantity,
+        'price' => $subtotal
+    ];
     }
+
+    // Send Email
+
+    // Send Order Details to the admin's email
+$to_receiver = "mastersushifs@gmail.com";
+$subject = "New Order";
+// $message = "";
+$message = "
+<div style='font-family: Arial, sans-serif; padding: 20px;'>
+    <h2 style='color: #333;'>🛒 New Order Received</h2>
+    <p><strong>Order Tracker:</strong> $order_tracker</p>
+    <hr>
+
+    <h3>👤 Customer Details</h3>
+    <p><strong>Name:</strong> $fullname</p>
+    <p><strong>Email:</strong> $customer_email</p>
+    <p><strong>Phone:</strong> $customer_phone</p>
+    <p><strong>Address:</strong> $address</p>
+
+    <h3>📦 Order Info</h3>
+    <p><strong>Transaction Type:</strong> $transaction_type</p>
+    <p><strong>Pickup Date:</strong> $pickup_date</p>
+    <p><strong>Pickup Time:</strong> $pickup_time</p>
+    <p><strong>Payment Method:</strong> $payment_method</p>
+    <p><strong>Total Amount:</strong> <strong style='color: #27ae60;'>₱" . number_format($total_amount, 2) . "</strong></p>
+    <p><strong>Status:</strong> Pending</p>
+
+    <h3 style='margin-top: 30px;'>Order Details</h3>
+    <table style='width: 100%; border-collapse: collapse; font-size: 14px;'>
+";
+
+// Loop through order items (assuming you already have $orderItems array)
+foreach ($orderItems as $item) {
+    $message .= "
+        <tr style='border-bottom: 1px solid #eee;'>
+            <td style='padding: 10px 0;'>
+                <strong>{$item['name']}</strong><br>
+                <span style='color: #555;'>{$item['details']}</span><br>
+                <span>Qty: {$item['qty']}</span>
+            </td>
+            <td style='text-align: right; vertical-align: top; font-weight: bold;'>
+                ₱" . number_format($item['price'], 2) . "
+            </td>
+        </tr>
+    ";
+}
+
+$message .= "
+    </table>
+    <hr style='margin-top: 40px;'>
+    <p style='font-size: 13px; color: #888;'>This is an automated notification from Master Sushi Food Kiosk.</p>
+</div>
+";
+$headers = "mastersushifs@gmail.com";
+
+include '../mail/send_email.php';
+    // Send Email
 
     // Clear cart
     $clearCartStmt = $conn->prepare("DELETE FROM cart WHERE user_id = ?");

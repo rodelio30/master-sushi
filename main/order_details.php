@@ -112,7 +112,8 @@ if ($receipt_result->num_rows > 0) {
                         </div>
 
                       <div class="d-flex align-items-center gap-2">
-                          <span class="fw-bold">Update Status:</span>
+                          <span class="fw-bold"><?= ($order_receipt_exists) ? 'Update Status:': 'Pending Payment:';?></span>
+
                           <?php
                             $status = $order['order_status'];
                           ?>
