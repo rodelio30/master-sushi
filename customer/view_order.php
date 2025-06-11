@@ -286,7 +286,7 @@ include 'nav.php';
     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
       <div class="accordion-body">
   <!-- Bank Details -->
-        <div id="bankDetails" class="alert alert-light border mt-2">
+        <div id="bankDetails" class="alert alert-light mt-2">
           <strong>Bank Transfer Details:</strong><br>
           Bank Name: <strong>Security Bank</strong><br>
           Account Name: 
@@ -308,7 +308,7 @@ include 'nav.php';
     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
       <div class="accordion-body">
 <!-- GCash Details -->
-<div id="gcashDetails" class="alert alert-light border">
+<div id="gcashDetails" class="alert alert-light">
   <div class="row">
     <div class="col-md-7">
       <strong>GCash Details:</strong><br>

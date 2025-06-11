@@ -24,7 +24,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
-  <p><strong>Effective Date:</strong> [Insert Date]</p>
+  <p><strong>Effective Date:</strong> June 2025</p>
   <p>This Privacy Policy explains how we collect, use, and protect your information when you use our website or services.</p>
 
   <h6>1. Information We Collect</h6>
@@ -76,7 +76,7 @@
   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
-  <p><strong>Effective Date:</strong> [Insert Date]</p>
+  <p><strong>Effective Date:</strong> June 2025</p>
   <p>By using our website and services, you agree to the following Terms and Conditions:</p>
 
   <h6>1. Account Responsibility</h6>

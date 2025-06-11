@@ -90,7 +90,7 @@ html, body {
 }
 
 .btn-gradient {
-    background: linear-gradient(to right, #1c4e92, #163871);
+    background: linear-gradient(to right, #005aac, #163871);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -100,7 +100,7 @@ html, body {
 }
 
 .btn-gradient:hover {
-    background: linear-gradient(to right, #163871, #1c4e92);
+    background: linear-gradient(to right, #163871, #005aac);
     color: white;
 }
 
