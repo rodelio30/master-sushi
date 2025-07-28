@@ -39,6 +39,7 @@ if (isset($_GET['id'])) {
 <!-- <style>
 
 </style> -->
+
 <body>
 
 <?php
@@ -100,7 +101,7 @@ include 'nav.php';
         </div>
 
         <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
-        <button type="submit" name="add_to_cart" class="add-to-cart">ADD TO CART  <i class="cart-icon">🛒</i></button>
+        <button type="submit" name="add_to_cart" class="add-to-cart">ADD TO CART  <i class="fas fa-shopping-cart text-white"></i></button>
       </form>
       </div>
     </div>

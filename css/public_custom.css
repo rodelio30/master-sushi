@@ -94,7 +94,7 @@ html, body {
     color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 14px;
     border-radius: 5rem;
     transition: 0.3s ease-in-out;
 }
@@ -223,7 +223,7 @@ html, body {
 }
 
 .product-title {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: 700;
   margin-bottom: 10px;
   color: #111;
@@ -231,7 +231,7 @@ html, body {
 
 .product-description {
   font-size: 1.1rem;
-  color: #333;
+  color: #585656;
   margin-bottom: 20px;
 }
 
@@ -245,13 +245,16 @@ html, body {
 }
 
 .qty-btn {
-  background-color: #e5e7eb;
+  background-color: #f1f3f6;
   border: none;
   padding: 6px 10px;
   margin: 0 4px;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+}
+.qty-btn:hover {
+  background-color: #eaecee;
 }
 
 .price-info input {
@@ -268,7 +271,7 @@ html, body {
   background: linear-gradient(to right, #1c4e92, #163871);
   width: 60%;
   color: white;
-  font-size: 18px;
+  font-size: 14px;
   border: none;
   border-radius: 5rem;
   display: flex;
@@ -285,6 +288,7 @@ html, body {
 
 .cart-icon {
   font-size: 1.2rem;
+  color: white !important;
 }
 @media (max-width: 768px) {
   #productSection {
@@ -330,7 +334,7 @@ html, body {
 
   .add-to-cart {
     width: 100%;
-    font-size: 16px;
+    font-size: 12px;
     padding: 12px;
   }
 

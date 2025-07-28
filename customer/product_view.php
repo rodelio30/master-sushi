@@ -87,7 +87,7 @@ include 'nav.php';
 </script>
       <?php endif; ?>
       <form method="POST" action="add_to_cart.php">
-        <h2 class="product-title"><?php echo htmlspecialchars($product['product_name']); ?></h2>
+        <h3 class="product-title"><?php echo htmlspecialchars($product['product_name']); ?></h3>
         <p class="product-description">
           <?php 
               $description = nl2br(htmlspecialchars($product['description']));
@@ -118,7 +118,7 @@ include 'nav.php';
         </div>
 
         <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
-        <button type="submit" name="add_to_cart" class="add-to-cart">ADD TO CART  <i class="cart-icon">🛒</i></button>
+        <button type="submit" name="add_to_cart" class="add-to-cart">ADD TO CART  <i class="fas fa-shopping-cart text-white"></i></button>
       </form>
       </div>
     </div>
